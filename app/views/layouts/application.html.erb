@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ems</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-light bg-light d-flex">
+          <div class="container">
+            <div class="logo">
+              <a class="navbar-brand" href="<%= root_path %>">
+                EMPLOYEE MANAGEMENT SYSTEM
+              </a>
+            </div>
+            
+            <div class="user-section">
+                
+                <% if admin_signed_in? %>
+                <i class="fa fa-user"></i> Signed In As :
+                <%= link_to(current_admin.email, edit_admin_registration_path) %> |
+                <%= link_to('Logout', destroy_admin_session_path, method: :delete, class:"btn btn-info") %>    
+              <% else %>
+                
+              <% end %>
+            
+             
+            </div>
+          </div>
+        </nav>
+        <br>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
+    <%= yield %>
+  </body>
+</html>
